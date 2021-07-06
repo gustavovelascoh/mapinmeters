@@ -2,7 +2,14 @@
 
 This projects uses `tilemapbase` and `pyproj` to plot position data (latitude, longitude) in an OpenStreetMap background and using meters as units. It requires `matplotlib` as well.
 
-# Acknoledgements
+Some background information in this [blog post](https://gustavovelascoh.wordpress.com/?p=782).
+
+## Examples
+
+There is a Jupyter notebook in the examples folder. Testing data is NMEA format is available in the data folder.
+
+
+## Acknoledgements
 
 This development was done within the project "Multi-Application Localisation and Mapping System for Off-Road Environments", part of the ALECS programme: A Marie Skłodowska-Curie COFUND fellowship, coordinated by Lero, the irish Software Research Centre.
 
