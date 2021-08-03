@@ -13,6 +13,7 @@ class ExtentUTM(Extent):
                  latitude_max,
                  proj_cmd):
 
+        self.proj_cmd = proj_cmd
         self.utm_project = Proj(proj_cmd)
         xmin, ymin = project(longitude_min, latitude_max)
         xmax, ymax = project(longitude_max, latitude_min)
@@ -22,4 +23,13 @@ class ExtentUTM(Extent):
     def to_utm(self, x, y):
         lon, lat = to_lonlat(x, y)
         return self.utm_project(lon,lat)
+    
+    def to_aspect(self, aspect, shrink=True):
+        xmin, xmax, ymin, ymax = self._to_aspect(aspect, shrink)
+
+        # Y axis is north-south, hence, max and min are reversed for y axis.
+        lomin, lamax = to_lonlat(xmin, ymin)
+        lomax, lamin = to_lonlat(xmax, ymax)
+
+        return ExtentUTM(lomin, lomax, lamin, lamax, self.proj_cmd)
     
